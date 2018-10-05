@@ -15,5 +15,15 @@ def query_channels():
     return records
 
 
-for c in query_channels():
-    print(c)
+chans = query_channels()
+just_chans = [x[0] for x in chans]
+
+subs = [x[1] for x in chans]
+total_sum = sum(subs)
+
+normal_subs = [x / total_sum for x in subs]
+
+print(sum(normal_subs))
+print(total_sum)
+
+print(numpy.random.choice(just_chans, p=normal_subs))
